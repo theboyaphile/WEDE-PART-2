@@ -1,97 +1,271 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Hope Haven NPO</title>
-</head>
-<body>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hope Haven NPO</title>
 
-    <header>
-        <nav>
-            <div>Hope Haven</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="enquiry.html">Enquiry</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-            <button type="button">DONATE NOW</button>
-        </nav>
+    <!-- Tailwind CSS with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <!-- Google Fonts & Material Symbols -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&family=Chivo:wght@400;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+    <!-- Tailwind Configuration -->
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#002045",
+                        "primary-container": "#1a365d",
+                        "primary-fixed": "#d6e3ff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#86a0cd",
+                        "on-primary-fixed": "#001b3c",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "secondary": "#7d5700",
+                        "secondary-container": "#ffc250",
+                        "secondary-fixed": "#ffdeaa",
+                        "secondary-fixed-dim": "#f8bc4b",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-container": "#725000",
+                        "on-secondary-fixed": "#271900",
+                        "on-secondary-fixed-variant": "#5f4100",
+                        "tertiary": "#172131",
+                        "tertiary-container": "#2c3647",
+                        "tertiary-fixed": "#d9e3f9",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#959fb3",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "background": "#f7fafc",
+                        "on-background": "#181c1e",
+                        "surface": "#f7fafc",
+                        "on-surface": "#181c1e",
+                        "surface-dim": "#d7dadc",
+                        "surface-bright": "#f7fafc",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface-variant": "#43474e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f1f4f6",
+                        "surface-container": "#ebeef0",
+                        "surface-container-high": "#e5e9eb",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-surface": "#2d3133",
+                        "inverse-on-surface": "#eef1f3",
+                        "inverse-primary": "#adc7f7",
+                        "outline": "#74777f",
+                        "outline-variant": "#c4c6cf",
+                        "error": "#ba1a1a",
+                        "error-container": "#ffdad6",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "container-max": "1280px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Chivo", "sans-serif"],
+                        "headline-lg": ["Chivo", "sans-serif"],
+                        "headline-md": ["Chivo", "sans-serif"],
+                        "headline-xl-mobile": ["Chivo", "sans-serif"],
+                        "body-lg": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "body-md": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "body-sm": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "label-bold": ["Atkinson Hyperlegible Next", "sans-serif"]
+                    },
+                    fontSize: {
+                        "headline-xl": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "800" }],
+                        "headline-xl-mobile": ["32px", { lineHeight: "40px", letterSpacing: "-0.01em", fontWeight: "800" }],
+                        "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "700" }],
+                        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+                        "body-lg": ["20px", { lineHeight: "30px", fontWeight: "400" }],
+                        "body-md": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+                        "body-sm": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "label-bold": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container">
+
+    <!-- Header / Navbar -->
+    <header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed-dim sticky top-0 w-full z-50 border-b border-outline-variant dark:border-outline shadow-sm transition-colors duration-200 ease-in-out">
+        <div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+            <a href="index.html" class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim flex items-center gap-2">
+                <span class="material-symbols-outlined fill text-secondary-container">volunteer_activism</span>
+                Hope Haven
+            </a>
+
+            <nav class="hidden md:flex gap-8 items-center h-full">
+                <a href="index.html#about" class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 h-full flex items-center mt-[2px]">About Us</a>
+                <a href="services.html" class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors h-full flex items-center">Services</a>
+                <a href="volunteer.html" class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors h-full flex items-center">Volunteer</a>
+                <a href="contact.html" class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors h-full flex items-center">Contact</a>
+            </nav>
+
+            <a href="donate.html" class="bg-secondary-container text-primary font-label-bold text-label-bold px-6 py-3 rounded-DEFAULT hover:bg-secondary-fixed-dim transition-colors duration-200 min-h-[48px] flex items-center justify-center">
+                DONATE NOW
+            </a>
+        </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section>
-            <h1>Restoring Hope and Building Stable Futures</h1>
-            <p>Hope Haven provides emergency lodging, nutritional relief, and vocational programs to empower individuals facing displacement and vulnerability.</p>
-            <button type="button">Get Assistance</button>
-            <button type="button">Donate Today</button>
-            <div>
-                <img src="hero-image.jpg" alt="Hope Haven community center activities">
+    <!-- Hero Section -->
+    <section id="about" class="relative bg-surface-container-low overflow-hidden">
+        <div class="max-w-container-max mx-auto px-margin-desktop py-24 md:py-32 grid grid-cols-1 md:grid-cols-12 gap-gutter items-center min-h-[819px]">
+            
+            <!-- Text Content -->
+            <div class="md:col-span-6 z-10 flex flex-col gap-6 md:pr-12">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface-container-high border border-outline-variant w-fit">
+                    <span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+                    <span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider text-xs">Community Impact 2026</span>
+                </div>
+                <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary-container leading-tight">
+                    Building Pathways from Crisis to Stability.
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                    Hope Haven provides immediate relief and long-term solutions for individuals experiencing homelessness. We believe in dignity, community, and the power of human connection.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                    <button type="button" class="bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-4 rounded-DEFAULT hover:bg-primary transition-colors duration-200 min-h-[48px] flex items-center justify-center gap-2 shadow-sm">
+                        Get Help Now
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                    </button>
+                    <button type="button" class="border-2 border-primary-container text-primary-container font-label-bold text-label-bold px-8 py-4 rounded-DEFAULT hover:bg-surface-container-high transition-colors duration-200 min-h-[48px] flex items-center justify-center">
+                        View Our Impact
+                    </button>
+                </div>
             </div>
-        </section>
 
-        <!-- Brief Introduction / Impact Highlights -->
-        <section>
-            <h2>Our Core Impact</h2>
-            <p>Dedicated to transparent, high-impact community assistance across multiple centers.</p>
-            <div>
-                <h3>1,200+</h3>
-                <p>Nutritional Meals Served Weekly</p>
+            <!-- Image & Progress Card -->
+            <div class="md:col-span-6 relative h-full min-h-[400px] rounded-xl overflow-hidden shadow-lg border border-outline-variant/30 mt-12 md:mt-0">
+                <!-- Local Image Asset -->
+                <img src="Assets/home.jpg" alt="Hope Haven community volunteers preparing meals" class="absolute inset-0 w-full h-full object-cover rounded-xl"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-primary-container/80 via-primary-container/20 to-transparent"></div>
+                
+                <!-- Fundraising Card Overlay -->
+                <div class="absolute bottom-0 left-0 p-8 w-full">
+                    <div class="bg-surface/95 backdrop-blur-sm p-6 rounded-lg border border-outline-variant shadow-sm max-w-sm">
+                        <p class="font-label-bold text-label-bold text-primary-container mb-2 uppercase tracking-wide">RAISING FOR HUMAN HAVEN</p>
+                        <div class="flex justify-between items-end mb-2">
+                            <span class="font-headline-md text-headline-md text-on-surface">R45,000</span>
+                            <span class="font-body-sm text-body-sm text-on-surface-variant">RAISED OF OUR R50,000 GOAL</span>
+                        </div>
+                        <div class="w-full bg-surface-container-highest h-3 rounded-full overflow-hidden">
+                            <div class="bg-secondary-container h-full rounded-full" style="width: 90%"></div>
+                        </div>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant mt-3">Funding 4,000 hot meals this month</p>
+                    </div>
+                </div>
             </div>
-            <div>
-                <h3>400+</h3>
-                <p>Emergency Shelter Beds Managed</p>
-            </div>
-            <div>
-                <h3>85%</h3>
-                <p>Direct Program Funding Efficiency</p>
-            </div>
-        </section>
 
-        <!-- Featured Programs -->
-        <section>
-            <h2>Our Primary Services</h2>
-            <div>
-                <h3>Emergency Housing</h3>
-                <p>Safe, clean, and temporary lodging facilities designed to support vulnerable community members.</p>
-                <a href="services.html">Learn More</a>
-            </div>
-            <div>
-                <h3>Nutritional Relief</h3>
-                <p>Structured daily meal distribution schedules delivering balanced dietary support to families in need.</p>
-                <a href="services.html">Learn More</a>
-            </div>
-            <div>
-                <h3>Skills Development</h3>
-                <p>Comprehensive vocational rehabilitation and training workshops to enable sustainable self-sufficiency.</p>
-                <a href="services.html">Learn More</a>
-            </div>
-        </section>
-
-        <!-- Call To Action -->
-        <section>
-            <h2>Support Our Mission</h2>
-            <p>Whether through volunteer time or financial contributions, your support directly changes lives.</p>
-            <a href="enquiry.html">Become a Volunteer</a>
-            <a href="enquiry.html">Become a Sponsor</a>
-        </section>
-    </main>
-
-    <footer>
-        <div>
-            <div>Hope Haven</div>
-            <p>Bridging the gap between professional governance and compassionate outreach.</p>
-            <p>Registered Charity No. 123456789</p>
         </div>
-        <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="enquiry.html">Enquiry</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-24 bg-surface">
+        <div class="max-w-container-max mx-auto px-margin-desktop">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="font-headline-lg text-headline-lg text-primary-container mb-4">Core Services</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">We provide a comprehensive continuum of care designed to address immediate crises while building a foundation for sustainable independence.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+                <!-- Service 1 -->
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 hover:shadow-[0px_4px_12px_rgba(26,54,93,0.05)] transition-shadow duration-300 flex flex-col group h-full">
+                    <div class="w-16 h-16 rounded-full bg-primary-container/10 text-primary-container flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-on-primary transition-colors duration-300">
+                        <span class="material-symbols-outlined text-3xl">bed</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary-container mb-4">Emergency Lodging</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">Safe, clean, and secure short-term housing for individuals and families facing immediate housing crises, providing a stable foundation to begin recovery.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-primary-container font-label-bold text-label-bold hover:text-secondary-container transition-colors mt-auto">
+                        Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 hover:shadow-[0px_4px_12px_rgba(26,54,93,0.05)] transition-shadow duration-300 flex flex-col group h-full">
+                    <div class="w-16 h-16 rounded-full bg-secondary-container/20 text-secondary-container flex items-center justify-center mb-6 group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors duration-300">
+                        <span class="material-symbols-outlined text-3xl">restaurant</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary-container mb-4">Daily Meals</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">Nutritious, hot meals served three times a day in our community dining hall, ensuring no one in our care goes hungry while fostering a sense of community.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-primary-container font-label-bold text-label-bold hover:text-secondary-container transition-colors mt-auto">
+                        Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-8 hover:shadow-[0px_4px_12px_rgba(26,54,93,0.05)] transition-shadow duration-300 flex flex-col group h-full">
+                    <div class="w-16 h-16 rounded-full bg-primary-container/10 text-primary-container flex items-center justify-center mb-6 group-hover:bg-primary-container group-hover:text-on-primary transition-colors duration-300">
+                        <span class="material-symbols-outlined text-3xl">handyman</span>
+                    </div>
+                    <h3 class="font-headline-md text-headline-md text-primary-container mb-4">Job Skills Training</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant flex-grow mb-6">Comprehensive workshops covering resume building, interview preparation, and vocational training to empower individuals to secure stable employment.</p>
+                    <a href="#" class="inline-flex items-center gap-2 text-primary-container font-label-bold text-label-bold hover:text-secondary-container transition-colors mt-auto">
+                        Learn More <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary dark:bg-tertiary-container text-on-primary dark:text-on-tertiary-container font-body-sm text-body-sm w-full py-12 transition-colors duration-200">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+            <div class="md:col-span-4 flex flex-col gap-6">
+                <div class="font-headline-sm text-headline-sm text-on-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined fill text-secondary-container">volunteer_activism</span>
+                    Hope Haven
+                </div>
+                <p class="text-on-primary/80 dark:text-on-tertiary-container/80 max-w-xs">
+                    Dedicated to providing comprehensive support and pathways to stability for those experiencing homelessness.
+                </p>
+                <div class="text-on-primary/60 mt-auto">
+                    © 2026 Hope Haven NPO. Registered Charity No. 123456789.
+                </div>
+            </div>
+
+            <div class="md:col-span-8 flex flex-wrap gap-x-12 gap-y-8 md:justify-end">
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-label-bold text-label-bold text-on-primary uppercase tracking-wider mb-2">Legal</h4>
+                    <a href="#" class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors">Terms of Service</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-label-bold text-label-bold text-on-primary uppercase tracking-wider mb-2">Transparency</h4>
+                    <a href="#" class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors">Annual Reports</a>
+                    <a href="#" class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors">NPO Registration</a>
+                </div>
+            </div>
+        </div>
     </footer>
 
 </body>

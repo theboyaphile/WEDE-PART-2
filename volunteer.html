@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Volunteer Portal - Hope Haven NPO</title>
+    
+    <!-- External Scripts & Stylesheets -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400;1,700&family=Chivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-tertiary-fixed-variant": "#3d4759",
+                "on-primary-fixed-variant": "#2d476f",
+                "primary": "#002045",
+                "primary-fixed-dim": "#adc7f7",
+                "surface-container": "#ebeef0",
+                "on-background": "#181c1e",
+                "on-tertiary-fixed": "#121c2c",
+                "on-secondary-fixed": "#271900",
+                "outline-variant": "#c4c6cf",
+                "background": "#f7fafc",
+                "secondary-container": "#ffc250",
+                "on-primary": "#ffffff",
+                "error-container": "#ffdad6",
+                "on-tertiary-container": "#959fb3",
+                "on-primary-container": "#86a0cd",
+                "inverse-on-surface": "#eef1f3",
+                "tertiary-fixed": "#d9e3f9",
+                "surface-tint": "#455f88",
+                "secondary-fixed-dim": "#f8bc4b",
+                "on-secondary": "#ffffff",
+                "primary-container": "#1a365d",
+                "primary-fixed": "#d6e3ff",
+                "on-error": "#ffffff",
+                "outline": "#74777f",
+                "surface-container-highest": "#e0e3e5",
+                "on-surface-variant": "#43474e",
+                "surface-bright": "#f7fafc",
+                "surface-container-high": "#e5e9eb",
+                "surface-container-lowest": "#ffffff",
+                "inverse-surface": "#2d3133",
+                "secondary-fixed": "#ffdeaa",
+                "surface-dim": "#d7dadc",
+                "on-error-container": "#93000a",
+                "surface": "#f7fafc",
+                "error": "#ba1a1a",
+                "tertiary-container": "#2c3647",
+                "on-secondary-container": "#725000",
+                "on-surface": "#181c1e",
+                "tertiary": "#172131",
+                "surface-container-low": "#f1f4f6",
+                "secondary": "#7d5700",
+                "tertiary-fixed-dim": "#bdc7dc",
+                "on-primary-fixed": "#001b3c",
+                "surface-variant": "#e0e3e5",
+                "inverse-primary": "#adc7f7",
+                "on-secondary-fixed-variant": "#5f4100",
+                "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "margin-desktop": "40px",
+                "unit": "8px",
+                "gutter": "24px",
+                "margin-mobile": "16px",
+                "container-max": "1280px"
+              },
+              "fontFamily": {
+                "headline-xl": ["Chivo"],
+                "label-bold": ["Atkinson Hyperlegible Next"],
+                "body-lg": ["Atkinson Hyperlegible Next"],
+                "body-sm": ["Atkinson Hyperlegible Next"],
+                "body-md": ["Atkinson Hyperlegible Next"],
+                "headline-md": ["Chivo"],
+                "headline-xl-mobile": ["Chivo"],
+                "headline-lg": ["Chivo"]
+              },
+              "fontSize": {
+                "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                "body-lg": ["20px", {"lineHeight": "30px", "fontWeight": "400"}],
+                "body-sm": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "body-md": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "headline-xl-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}]
+              }
+            }
+          }
+        }
+    </script>
+
+    <style>
+        body { font-family: 'Atkinson Hyperlegible Next', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Chivo', sans-serif; }
+        
+        .step-hidden { display: none; }
+        .step-active { display: block; animation: fadeIn 0.4s ease-out forwards; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-group input:focus, .input-group textarea:focus, .input-group select:focus {
+            border-color: #002045;
+            border-width: 2px;
+            outline: none;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+
+    <nav class="bg-surface dark:bg-surface-dim sticky top-0 w-full z-50 border-b border-outline-variant dark:border-outline shadow-sm">
+        <div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
+            <a href="index.html" class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+                Hope Haven
+            </a>
+            <div class="hidden md:flex gap-gutter items-center">
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="index.html#about">About Us</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="services.html">Services</a>
+                <a class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="volunteer.html">Volunteer</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="contact.html">Contact</a>
+            </div>
+            <a href="donate.html" type="button" class="bg-[#D69E2E] text-primary h-[48px] px-6 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-[#ffc250] transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]">
+                DONATE NOW
+            </a>
+        </div>
+    </nav>
+
+    <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-[64px] flex flex-col items-center">
+        <!-- Header Section -->
+        <div class="text-center max-w-2xl mb-12">
+            <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6">Join Our Volunteer Team</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">
+                Your time and skills can make a profound difference. Complete the application below to start your journey with Hope Haven.
+            </p>
+        </div>
+
+        <div class="w-full max-w-3xl bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(26,54,93,0.05)] p-6 md:p-10 relative overflow-hidden">
+            <!-- Progress Indicator -->
+            <div class="mb-10">
+                <div class="flex justify-between mb-2">
+                    <span class="font-label-bold text-label-bold text-primary" id="step-title">Step 1: Personal Details</span>
+                    <span class="font-label-bold text-label-bold text-on-surface-variant" id="step-counter">1 / 3</span>
+                </div>
+                <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden">
+                    <div class="h-full bg-[#D69E2E] transition-all duration-300 ease-in-out" id="progress-bar" style="width: 33.33%;"></div>
+                </div>
+            </div>
+
+            <div class="w-full" id="volunteer-form-display">
+                <!-- Step 1: Personal Info -->
+                <div class="step-active" id="step-1">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div class="input-group flex flex-col gap-2">
+                            <label class="font-label-bold text-label-bold text-primary" for="firstName">First Name <span class="text-error">*</span></label>
+                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="firstName" type="text"/>
+                        </div>
+                        <div class="input-group flex flex-col gap-2">
+                            <label class="font-label-bold text-label-bold text-primary" for="lastName">Last Name <span class="text-error">*</span></label>
+                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="lastName" type="text"/>
+                        </div>
+                        <div class="input-group flex flex-col gap-2 md:col-span-2">
+                            <label class="font-label-bold text-label-bold text-primary" for="email">Email Address <span class="text-error">*</span></label>
+                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="email" type="email"/>
+                        </div>
+                        <div class="input-group flex flex-col gap-2 md:col-span-2">
+                            <label class="font-label-bold text-label-bold text-primary" for="phone">Phone Number</label>
+                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="phone" type="tel"/>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Skills & Availability -->
+                <div class="step-hidden" id="step-2">
+                    <div class="flex flex-col gap-8 mb-8">
+                        <div class="input-group flex flex-col gap-2">
+                            <label class="font-label-bold text-label-bold text-primary" for="skills">Primary Skills/Interests</label>
+                            <select class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all appearance-none cursor-pointer" id="skills">
+                                <option disabled selected value="">Select an area of interest...</option>
+                                <option value="mentorship">Mentorship &amp; Tutoring</option>
+                                <option value="admin">Administrative Support</option>
+                                <option value="events">Event Coordination</option>
+                                <option value="logistics">Logistics &amp; Transport</option>
+                            </select>
+                        </div>
+                        <div class="input-group flex flex-col gap-4">
+                            <label class="font-label-bold text-label-bold text-primary">Availability (Check all that apply)</label>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                    <span class="font-body-sm text-body-sm">Weekdays</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                    <span class="font-body-sm text-body-sm">Weeknights</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                    <span class="font-body-sm text-body-sm">Weekends</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                    <span class="font-body-sm text-body-sm">Flexible</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group flex flex-col gap-2">
+                            <label class="font-label-bold text-label-bold text-primary" for="experience">Briefly describe any relevant experience</label>
+                            <textarea class="p-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all resize-none" id="experience" rows="4"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Authorization & Consent -->
+                <div class="step-hidden" id="step-3">
+                    <div class="flex flex-col gap-6 mb-8">
+                        <div class="p-6 bg-surface-container-low rounded-lg border border-outline-variant">
+                            <h3 class="font-headline-md text-headline-md text-primary mb-4">Background Check Authorization</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+                                As a non-profit organization working with vulnerable populations, Hope Haven requires a standard background check for all regular volunteers. By checking the box below, you consent to this process.
+                            </p>
+                            <label class="flex items-start gap-3 cursor-pointer mt-6">
+                                <input class="mt-1 w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" id="consent-check" type="checkbox"/>
+                                <span class="font-body-sm text-body-sm text-on-surface">I authorize Hope Haven NPO to conduct a background check and agree to the Volunteer Terms of Service. <span class="text-error">*</span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Controls -->
+                <div class="flex justify-between pt-6 border-t border-outline-variant mt-4">
+                    <button class="hidden h-[48px] px-6 rounded-lg font-label-bold text-label-bold border-2 border-primary text-primary hover:bg-surface-container-low transition-colors flex items-center justify-center" id="prev-btn" type="button">
+                        Back
+                    </button>
+                    <div class="flex-grow"></div>
+                    <button class="bg-primary text-on-primary h-[48px] px-8 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-primary-container transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]" id="next-btn" type="button">
+                        Continue
+                    </button>
+                    <button class="hidden bg-[#D69E2E] text-primary h-[48px] px-8 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-[#ffc250] transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]" id="submit-btn" type="button">
+                        Submit Application
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-primary dark:bg-tertiary-container w-full py-12 mt-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-desktop max-w-container-max mx-auto">
+            <div class="md:col-span-4 flex flex-col gap-4">
+                <span class="font-headline-sm text-headline-sm text-on-primary">Hope Haven</span>
+                <p class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80">
+                    © 2024 Hope Haven NPO. Registered Charity No. 123456789.
+                </p>
+            </div>
+            <div class="md:col-span-8 flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-center">
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">Privacy Policy</a>
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">Terms of Service</a>
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">Annual Reports</a>
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">NPO Registration</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="demo-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+        <div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl max-w-md w-full shadow-lg text-center flex flex-col items-center gap-4">
+            <div class="w-12 h-12 rounded-full bg-[#ffc250]/20 flex items-center justify-center text-primary">
+                <span class="material-symbols-outlined text-3xl">check_circle</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md text-primary">Application Submitted</h3>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">Thank you for submitting your volunteer application to Hope Haven!</p>
+            <button id="close-modal-btn" type="button" class="mt-2 bg-primary text-on-primary h-[40px] px-6 rounded-lg font-label-bold text-label-bold hover:bg-primary-container transition-colors">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentStep = 1;
+            const totalSteps = 3;
+            
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+            const progressBar = document.getElementById('progress-bar');
+            const stepCounter = document.getElementById('step-counter');
+            const stepTitle = document.getElementById('step-title');
+            const modal = document.getElementById('demo-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            
+            const titles = [
+                "Step 1: Personal Details",
+                "Step 2: Skills & Availability",
+                "Step 3: Authorization & Consent"
+            ];
+
+            function updateUI() {
+                for (let i = 1; i <= totalSteps; i++) {
+                    const stepEl = document.getElementById(`step-${i}`);
+                    if (i === currentStep) {
+                        stepEl.classList.remove('step-hidden');
+                        stepEl.classList.add('step-active');
+                    } else {
+                        stepEl.classList.remove('step-active');
+                        stepEl.classList.add('step-hidden');
+                    }
+                }
+
+                progressBar.style.width = `${(currentStep / totalSteps) * 100}%`;
+                stepCounter.textContent = `${currentStep} / ${totalSteps}`;
+                stepTitle.textContent = titles[currentStep - 1];
+
+                if (currentStep === 1) {
+                    prevBtn.classList.add('hidden');
+                } else {
+                    prevBtn.classList.remove('hidden');
+                }
+
+                if (currentStep === totalSteps) {
+                    nextBtn.classList.add('hidden');
+                    submitBtn.classList.remove('hidden');
+                } else {
+                    nextBtn.classList.remove('hidden');
+                    submitBtn.classList.add('hidden');
+                }
+            }
+
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    updateUI();
+                }
+            });
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 1) {
+                    currentStep--;
+                    updateUI();
+                }
+            });
+
+            submitBtn.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+            
+            updateUI();
+        });
+    </script>
+</body>
+</html>

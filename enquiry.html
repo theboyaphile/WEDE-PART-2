@@ -1,89 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Enquiry & Involvement - Hope Haven NPO</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&amp;family=Chivo:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "primary": "#002045",
+                        "primary-fixed-dim": "#adc7f7",
+                        "surface-container": "#ebeef0",
+                        "on-background": "#181c1e",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-secondary-fixed": "#271900",
+                        "outline-variant": "#c4c6cf",
+                        "background": "#f7fafc",
+                        "secondary-container": "#ffc250",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#959fb3",
+                        "on-primary-container": "#86a0cd",
+                        "inverse-on-surface": "#eef1f3",
+                        "tertiary-fixed": "#d9e3f9",
+                        "surface-tint": "#455f88",
+                        "secondary-fixed-dim": "#f8bc4b",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1a365d",
+                        "primary-fixed": "#d6e3ff",
+                        "on-error": "#ffffff",
+                        "outline": "#74777f",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface-variant": "#43474e",
+                        "surface-bright": "#f7fafc",
+                        "surface-container-high": "#e5e9eb",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#ffdeaa",
+                        "surface-dim": "#d7dadc",
+                        "on-error-container": "#93000a",
+                        "surface": "#f7fafc",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#2c3647",
+                        "on-secondary-container": "#725000",
+                        "on-surface": "#181c1e",
+                        "tertiary": "#172131",
+                        "surface-container-low": "#f1f4f6",
+                        "secondary": "#7d5700",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-primary": "#adc7f7",
+                        "on-secondary-fixed-variant": "#5f4100",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["chivo"],
+                        "label-bold": ["atkinsonHyperlegibleNext"],
+                        "body-lg": ["atkinsonHyperlegibleNext"],
+                        "body-sm": ["atkinsonHyperlegibleNext"],
+                        "body-md": ["atkinsonHyperlegibleNext"],
+                        "headline-md": ["chivo"],
+                        "headline-xl-mobile": ["chivo"],
+                        "headline-lg": ["chivo"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "body-sm": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
 
     <header>
-        <nav>
-            <div>Hope Haven</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="enquiry.html">Enquiry</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-            <button type="button">DONATE NOW</button>
+        <nav class="bg-surface dark:bg-surface-dim sticky top-0 w-full z-50 border-b border-outline-variant dark:border-outline shadow-sm">
+            <div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto hidden md:flex">
+                <a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim" href="index.html">Hope Haven</a>
+                <div class="flex space-x-8 items-center">
+                    <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="index.html">Home</a>
+                    <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="index.html#about">About Us</a>
+                    <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="services.html">Services</a>
+                    <a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 font-body-md text-body-md" href="enquiry.html">Enquiry</a>
+                    <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="contact.html">Contact Us</a>
+                    <a href="donate.html" class="bg-primary-container text-on-primary font-label-bold text-label-bold px-6 py-3 rounded-DEFAULT hover:bg-primary transition-colors min-h-[48px] inline-flex items-center justify-center" type="button">DONATE NOW</a>
+                </div>
+            </div>
+            <!-- Mobile Navigation Header -->
+            <div class="flex justify-between items-center h-20 px-margin-mobile md:hidden">
+                <a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim" href="index.html">Hope Haven</a>
+                <span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+            </div>
         </nav>
     </header>
 
-    <main>
-        <section>
-            <h1>Get Involved & Enquire</h1>
-            <p>Interested in becoming a volunteer or corporate sponsor? Fill out the inquiry form below to join our cause.</p>
+    <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 space-y-16">
+        <!-- Hero Header Section -->
+        <section class="text-center max-w-3xl mx-auto space-y-6">
+            <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary">Get Involved &amp; Enquire</h1>
+            <p class="font-body-lg text-body-lg text-on-surface-variant">Interested in becoming a volunteer, corporate partner, or seeking service information? Fill out the form below to connect with our team.</p>
         </section>
 
-        <section>
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Contact Information</legend>
+        <section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+            <!-- Form Card (8 Cols Desktop) -->
+            <div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
+                <form action="#" method="post" class="space-y-10">
                     
-                    <label for="fullName">Full Name:</label>
-                    <input type="text" id="fullName" name="fullName" required>
+                    <!-- Fieldset 1: Contact Information -->
+                    <fieldset class="space-y-6 border border-outline-variant/60 rounded-xl p-6 bg-surface-container-low/30">
+                        <legend class="px-3 font-headline-md text-headline-md text-primary bg-surface-container-lowest rounded">
+                            Contact Information
+                        </legend>
 
-                    <label for="email">Email Address:</label>
-                    <input type="email" id="email" name="email" required>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="fullName">Full Name *</label>
+                                <input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT p-3 text-on-surface font-body-md min-h-[48px]" id="fullName" name="fullName" required="" type="text" placeholder="Jane Doe"/>
+                            </div>
+                            <div>
+                                <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="email">Email Address *</label>
+                                <input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT p-3 text-on-surface font-body-md min-h-[48px]" id="email" name="email" required="" type="email" placeholder="jane@example.com"/>
+                            </div>
+                        </div>
 
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" name="phone">
-                </fieldset>
+                        <div>
+                            <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="phone">Phone Number</label>
+                            <input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT p-3 text-on-surface font-body-md min-h-[48px]" id="phone" name="phone" type="tel" placeholder="+27 82 123 4567"/>
+                        </div>
+                    </fieldset>
 
-                <fieldset>
-                    <legend>Type of Inquiry</legend>
-                    
-                    <label for="inquiryType">I want to inquire about:</label>
-                    <select id="inquiryType" name="inquiryType" required>
-                        <option value="">-- Please Select --</option>
-                        <option value="volunteer">Becoming a Volunteer</option>
-                        <option value="sponsor">Becoming a Corporate Sponsor</option>
-                        <option value="general_service">General Service Inquiry</option>
-                    </select>
-                </fieldset>
+                    <!-- Fieldset 2: Type of Inquiry -->
+                    <fieldset class="space-y-6 border border-outline-variant/60 rounded-xl p-6 bg-surface-container-low/30">
+                        <legend class="px-3 font-headline-md text-headline-md text-primary bg-surface-container-lowest rounded">
+                            Type of Inquiry
+                        </legend>
 
-                <fieldset>
-                    <legend>Inquiry Details</legend>
-                    
-                    <label for="availability">Availability (For Volunteers):</label>
-                    <input type="text" id="availability" name="availability" placeholder="e.g. Weekends, Weekday mornings">
+                        <div>
+                            <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="inquiryType">I want to inquire about *</label>
+                            <select class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT p-3 text-on-surface font-body-md min-h-[48px]" id="inquiryType" name="inquiryType" required="">
+                                <option value="">-- Please Select --</option>
+                                <option value="volunteer">Becoming a Volunteer</option>
+                                <option value="sponsor">Becoming a Corporate Sponsor</option>
+                                <option value="general_service">General Service Inquiry</option>
+                            </select>
+                        </div>
+                    </fieldset>
 
-                    <label for="skills">Key Skills or Offerings:</label>
-                    <input type="text" id="skills" name="skills" placeholder="e.g. Cooking, Teaching, Financial Support">
+                    <!-- Fieldset 3: Inquiry Details -->
+                    <fieldset class="space-y-6 border border-outline-variant/60 rounded-xl p-6 bg-surface-container-low/30">
+                        <legend class="px-3 font-headline-md text-headline-md text-primary bg-surface-container-lowest rounded">
+                            Inquiry Details
+                        </legend>
 
-                    <label for="message">Your Message:</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </fieldset>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="availability">Availability (For Volunteers)</label>
+                                <input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT p-3 text-on-surface font-body-md min-h-[48px]" id="availability" name="availability" placeholder="e.g. Weekends, Weekday mornings" type="text"/>
+                            </div>
+                            <div>
+                                <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="skills">Key Skills or Offerings</label>
+                                <input class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT p-3 text-on-surface font-body-md min-h-[48px]" id="skills" name="skills" placeholder="e.g. Cooking, Teaching, Legal Support" type="text"/>
+                            </div>
+                        </div>
 
-                <button type="submit">Submit Enquiry</button>
-            </form>
+                        <div>
+                            <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="message">Your Message *</label>
+                            <textarea class="w-full bg-surface-container-lowest border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary rounded-DEFAULT p-3 text-on-surface font-body-md" id="message" name="message" required="" rows="5" placeholder="Share any relevant information or questions..."></textarea>
+                        </div>
+                    </fieldset>
+
+                    <div class="pt-2">
+                        <button class="w-full md:w-auto bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-4 rounded-DEFAULT hover:bg-primary transition-colors min-h-[48px] text-lg shadow-sm" type="submit">
+                            Submit Enquiry
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Sidebar Info Cards (4 Cols Desktop) -->
+            <div class="md:col-span-4 flex flex-col space-y-gutter">
+                <div class="bg-error-container text-on-error-container border border-error-container rounded-xl p-8 shadow-sm">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">emergency</span>
+                        <h3 class="font-headline-md text-headline-md">Emergency Hotline</h3>
+                    </div>
+                    <p class="font-body-sm text-body-sm mb-6">In need of urgent shelter assistance or immediate crisis support?</p>
+                    <div>
+                        <span class="block font-label-bold text-label-bold text-on-error-container/80 uppercase text-xs mb-1">Direct Crisis Line</span>
+                        <a class="block bg-on-error-container text-error-container text-center font-headline-md text-headline-md py-3 rounded-DEFAULT hover:opacity-90 transition-opacity min-h-[48px]" href="tel:1-800-HOPE-NOW">
+                            1-800-HOPE-NOW
+                        </a>
+                    </div>
+                </div>
+
+                <div class="bg-primary text-on-primary rounded-xl p-8 shadow-sm flex-grow">
+                    <h3 class="font-headline-md text-headline-md mb-6 text-secondary-fixed">Why Partner With Us?</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-1">groups</span>
+                            <div>
+                                <h4 class="font-label-bold text-label-bold text-on-primary">Community Impact</h4>
+                                <p class="font-body-sm text-body-sm text-on-primary/80 mt-1">Directly transform lives in your local community through organized programs.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-1">handshake</span>
+                            <div>
+                                <h4 class="font-label-bold text-label-bold text-on-primary">Corporate Partnerships</h4>
+                                <p class="font-body-sm text-body-sm text-on-primary/80 mt-1">Transparent ESG and CSI alignment for organizations seeking meaningful social contribution.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <span class="material-symbols-outlined text-secondary-fixed text-2xl mt-1">mark_email_read</span>
+                            <div>
+                                <h4 class="font-label-bold text-label-bold text-on-primary">Direct Response</h4>
+                                <p class="font-body-sm text-body-sm text-on-primary/80 mt-1">Our involvement coordinators review inquiries within 24–48 business hours.</p>
+                            </div>
+                        </div>
+
+                        <div class="pt-4 border-t border-on-primary/20">
+                            <span class="block font-label-bold text-label-bold text-secondary-fixed text-xs uppercase mb-1">Involvement Desk</span>
+                            <a class="font-body-sm text-body-sm text-secondary-fixed hover:underline flex items-center space-x-2" href="mailto:involvement@hopehaven.org.za">
+                                <span class="material-symbols-outlined text-sm">mail</span>
+                                <span>involvement@hopehaven.org.za</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div>
-            <div>Hope Haven</div>
-            <p>Bridging the gap between professional governance and compassionate outreach.</p>
-            <p>Registered Charity No. 123456789</p>
+    <footer class="bg-primary dark:bg-tertiary-container w-full py-12 mt-auto">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-desktop max-w-container-max mx-auto text-on-primary dark:text-on-tertiary-container font-body-sm text-body-sm">
+            <div class="md:col-span-6 flex flex-col space-y-4">
+                <p class="font-headline-sm text-headline-sm text-on-primary font-bold text-2xl">Hope Haven</p>
+                <p>Bridging the gap between professional governance and compassionate outreach.</p>
+                <p>© 2026 Hope Haven NPO. Registered Charity No. 123456789.</p>
+            </div>
+            <div class="md:col-span-6 flex flex-wrap gap-x-8 gap-y-4 justify-start md:justify-end items-center">
+                <a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="about.html">About Us</a>
+                <a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="services.html">Services</a>
+                <a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200 font-bold" href="enquiry.html">Enquiry</a>
+                <a class="text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="contact.html">Contact</a>
+            </div>
         </div>
-        <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="enquiry.html">Enquiry</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
     </footer>
 
 </body>

@@ -1,81 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Hope Haven NPO</title>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Services &amp; Shelter Info - Hope Haven</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=Chivo:wght@400;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "primary": "#002045",
+                        "primary-fixed-dim": "#adc7f7",
+                        "surface-container": "#ebeef0",
+                        "on-background": "#181c1e",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-secondary-fixed": "#271900",
+                        "outline-variant": "#c4c6cf",
+                        "background": "#f7fafc",
+                        "secondary-container": "#ffc250",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-container": "#959fb3",
+                        "on-primary-container": "#86a0cd",
+                        "inverse-on-surface": "#eef1f3",
+                        "tertiary-fixed": "#d9e3f9",
+                        "surface-tint": "#455f88",
+                        "secondary-fixed-dim": "#f8bc4b",
+                        "on-secondary": "#ffffff",
+                        "primary-container": "#1a365d",
+                        "primary-fixed": "#d6e3ff",
+                        "on-error": "#ffffff",
+                        "outline": "#74777f",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-surface-variant": "#43474e",
+                        "surface-bright": "#f7fafc",
+                        "surface-container-high": "#e5e9eb",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "secondary-fixed": "#ffdeaa",
+                        "surface-dim": "#d7dadc",
+                        "on-error-container": "#93000a",
+                        "surface": "#f7fafc",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#2c3647",
+                        "on-secondary-container": "#725000",
+                        "on-surface": "#181c1e",
+                        "tertiary": "#172131",
+                        "surface-container-low": "#f1f4f6",
+                        "secondary": "#7d5700",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-variant": "#e0e3e5",
+                        "inverse-primary": "#adc7f7",
+                        "on-secondary-fixed-variant": "#5f4100",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["chivo"],
+                        "label-bold": ["atkinsonHyperlegibleNext"],
+                        "body-lg": ["atkinsonHyperlegibleNext"],
+                        "body-sm": ["atkinsonHyperlegibleNext"],
+                        "body-md": ["atkinsonHyperlegibleNext"],
+                        "headline-md": ["chivo"],
+                        "headline-xl-mobile": ["chivo"],
+                        "headline-lg": ["chivo"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "body-lg": ["20px", { "lineHeight": "30px", "fontWeight": "400" }],
+                        "body-sm": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-xl-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-background text-on-background font-body-md text-body-md antialiased min-h-screen flex flex-col">
 
-    <header>
-        <nav>
-            <div>Hope Haven</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="enquiry.html">Enquiry</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
-            <button type="button">DONATE NOW</button>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav class="bg-surface dark:bg-surface-dim sticky top-0 w-full z-50 border-b border-outline-variant dark:border-outline shadow-sm">
+        <div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <a href="index.html" class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">
+                Hope Haven
+            </a>
+            <div class="hidden md:flex space-x-8">
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="index.html#about">About Us</a>
+                <a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="services.html">Services</a>
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="volunteer.html">Volunteer</a>
+                <a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out font-body-md text-body-md" href="contact.html">Contact</a>
+            </div>
+            <a href="donate.html" class="bg-secondary-container text-primary-container font-label-bold text-label-bold px-6 h-12 rounded-lg hover:bg-secondary-fixed-dim transition-colors duration-200 flex items-center justify-center">
+                DONATE NOW
+            </a>
+        </div>
+    </nav>
 
-    <main>
-        <section>
-            <h1>Our Community Offerings</h1>
-            <p>Discover our comprehensive social relief programs designed to shelter, nourish, and empower individuals in need.</p>
+    <!-- Main Content -->
+    <main class="flex-grow pb-24">
+        <!-- Hero Section -->
+        <section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+                <div class="md:col-span-7">
+                    <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6">Services &amp; Shelter Information</h1>
+                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl">
+                        Providing immediate relief and long-term support for those in need. Access real-time shelter availability, daily meal schedules, and comprehensive support resources.
+                    </p>
+                </div>
+                <div class="md:col-span-5">
+                    <div class="bg-cover bg-center w-full h-[300px] rounded-xl border border-outline-variant/30 shadow-sm" data-alt="A modern, clean, and welcoming non-profit community center interior in light mode. Soft, natural sunlight streams through large windows, illuminating comfortable seating areas and helpful informational desks. The atmosphere is safe, stable, and professional, using a color palette of soft whites, light grays, and subtle navy blue accents. High-quality corporate non-profit photography style." style="background-image: url('Assets/services.jpg')"></div>
+                </div>
+            </div>
         </section>
 
-        <!-- Service Directory Details -->
-        <section>
-            <article>
-                <img src="shelter.jpg" alt="Emergency lodging shelter">
-                <h2>Emergency Shelter & Accommodation</h2>
-                <p>Safe and clean short-term housing for individuals and families in crisis. Facilities feature bed availability tracking, climate control, secure storage, and on-site hygiene resources.</p>
-                <ul>
-                    <li>24/7 Intake Availability</li>
-                    <li>Secure Lodging Facilities</li>
-                    <li>Hygiene and Sanitation Supplies</li>
-                </ul>
-            </article>
+        <!-- Live Shelter Status Section -->
+        <section class="bg-surface-container-low py-16">
+            <div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+                <div class="flex items-center mb-8">
+                    <span class="material-symbols-outlined text-primary text-3xl mr-3">bed</span>
+                    <h2 class="font-headline-lg text-headline-lg text-primary">Live Shelter Status</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Status Card 1 -->
+                    <div class="bg-surface rounded-xl border border-outline-variant p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-1">Downtown Center</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Men's Shelter</p>
+                            </div>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#E6F4EA] text-[#137333]">
+                                Open
+                            </span>
+                        </div>
+                        <div class="flex items-end space-x-2">
+                            <span class="font-headline-xl text-headline-xl text-primary">12</span>
+                            <span class="font-body-md text-body-md text-on-surface-variant pb-2">beds available</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-outline-variant/50">
+                            <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center">
+                                <span class="material-symbols-outlined text-base mr-2">update</span> Updated 5 mins ago
+                            </p>
+                        </div>
+                    </div>
 
-            <article>
-                <img src="meals.jpg" alt="Nutritional food support program">
-                <h2>Nutritional Relief & Meal Distribution</h2>
-                <p>Providing over 1,200 warm, balanced meals each week to combat food insecurity in our communities across fixed distribution centers.</p>
-                <ul>
-                    <li>Daily Breakfast and Dinner Service</li>
-                    <li>Emergency Food Parcel Packages</li>
-                    <li>Nutritional Guidance</li>
-                </ul>
-            </article>
+                    <!-- Status Card 2 -->
+                    <div class="bg-surface rounded-xl border border-outline-variant p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-1">Northside Haven</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Women &amp; Children</p>
+                            </div>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#FEF7E0] text-[#B06000]">
+                                Nearing Capacity
+                            </span>
+                        </div>
+                        <div class="flex items-end space-x-2">
+                            <span class="font-headline-xl text-headline-xl text-secondary">3</span>
+                            <span class="font-body-md text-body-md text-on-surface-variant pb-2">beds available</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-outline-variant/50">
+                            <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center">
+                                <span class="material-symbols-outlined text-base mr-2">update</span> Updated 12 mins ago
+                            </p>
+                        </div>
+                    </div>
 
-            <article>
-                <img src="skills.jpg" alt="Vocational training session">
-                <h2>Vocational Training & Skill Development</h2>
-                <p>Empowering individuals with practical, market-relevant job skills and career transition support to secure long-term independence.</p>
-                <ul>
-                    <li>Resume Writing and Interview Prep</li>
-                    <li>Basic Technical and Digital Literacy</li>
-                    <li>Trade and Craft Workshops</li>
-                </ul>
-            </article>
+                    <!-- Status Card 3 -->
+                    <div class="bg-surface rounded-xl border border-outline-variant p-6 shadow-sm hover:shadow-md transition-shadow duration-200">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wider mb-1">East Village Safehouse</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant">Youth Shelter (16-24)</p>
+                            </div>
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#FCE8E6] text-[#A50E0E]">
+                                Full
+                            </span>
+                        </div>
+                        <div class="flex items-end space-x-2">
+                            <span class="font-headline-xl text-headline-xl text-error">0</span>
+                            <span class="font-body-md text-body-md text-on-surface-variant pb-2">beds available</span>
+                        </div>
+                        <div class="mt-4 pt-4 border-t border-outline-variant/50">
+                            <p class="font-body-sm text-body-sm text-on-surface-variant flex items-center">
+                                <span class="material-symbols-outlined text-base mr-2">update</span> Updated 2 mins ago
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <div>
-            <div>Hope Haven</div>
-            <p>Bridging the gap between professional governance and compassionate outreach.</p>
-            <p>Registered Charity No. 123456789</p>
+    <!-- Footer -->
+    <footer class="bg-primary dark:bg-tertiary-container w-full py-12">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+            <div class="col-span-1 md:col-span-4 mb-8 md:mb-0">
+                <div class="font-headline-sm text-headline-sm text-on-primary mb-4 font-bold text-2xl">Hope Haven</div>
+                <p class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 mb-4">
+                    © 2024 Hope Haven NPO. Registered Charity No. 123456789.
+                </p>
+            </div>
+            <div class="col-span-1 md:col-span-8 flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-start">
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">Privacy Policy</a>
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">Terms of Service</a>
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">Annual Reports</a>
+                <a class="font-body-sm text-body-sm text-on-primary/80 dark:text-on-tertiary-container/80 hover:text-on-primary dark:hover:text-on-tertiary-fixed transition-colors duration-200" href="#">NPO Registration</a>
+            </div>
         </div>
-        <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="enquiry.html">Enquiry</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
     </footer>
 
 </body>
