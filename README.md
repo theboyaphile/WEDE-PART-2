@@ -1,30 +1,82 @@
-Referencing 
-Bro Code. (2024). CSS Full Course for Beginners | Complete CSS Tutorial. Available at: https://www.youtube.com/watch?v=HGTJBPNC-Gw (Accessed: 12 October 2026).
+# Hope Haven NPO Website
 
-Mozilla Developer Network. (2025). Add a favicon to your website. Available at: https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Add_a_favicon (Accessed: 15 October 2026).
+A responsive static website for Hope Haven, a South African non-profit organisation focused on crisis support, shelter access, volunteer engagement, and community outreach.
 
-Programming with Mosh. (2024). Node.js Tutorial for Beginners: Learn Node in 1 Hour. Available at: https://www.youtube.com/watch?v=TlB_eWDSMt4 (Accessed: 18 October 2026).
+## Overview
 
-W3Schools. (2025). Front End Web Developer. Available at: https://www.w3schools.com/whatis/whatis_frontend.asp (Accessed: 8 October 2026).
+This project provides a modern front-end experience for visitors to:
 
-FreeCodeCamp.org. (2025). Full Stack Web Development Course - Node.js, Express, and MongoDB. Available at: https://www.youtube.com/watch?v=7CqJlxBYj-M (Accessed: 22 October 2026).
+- learn about the organisation and its services,
+- find shelter and support information,
+- make a donation in demo/test mode,
+- contact the organisation,
+- volunteer for the team, and
+- view the local service map via Leaflet.
 
-Leaflet Contributors. (2024). Leaflet - a JavaScript library for interactive maps. Available at: https://leafletjs.com/ (Accessed: 4 October 2026).
+## Tech Stack
 
-Traversy Media. (2023). Leaflet.js Crash Course - Interactive Maps. Available at: https://www.youtube.com/watch?v=n_GJkynfvz4 (Accessed: 25 October 2026).
+- HTML5
+- CSS3
+- JavaScript
+- Leaflet for map integration
+- Firebase Hosting for deployment
+- GitHub for version control
 
-Google. (2025). Firebase Documentation. Available at: https://firebase.google.com/docs (Accessed: 10 October 2026).
+## Project Structure
 
-Fireship. (2024). Firebase in 100 Seconds. Available at: https://www.youtube.com/watch?v=3zdvpyZzZ_g (Accessed: 19 October 2026).
+- `index.html` – homepage
+- `services.html` – services and shelter information
+- `contact.html` – contact page with form and map
+- `volunteer.html` – volunteer application flow
+- `donate.html` – donation page with Stripe test-mode demo flow
+- `enquiry.html` – legacy enquiry form retained for direct access but not included in the main navigation
+- `styles.css` – shared styling and responsive design
+- `script.js` – shared site behaviour, animations, nav toggle, and form feedback
+- `contact-map.js` – standalone Leaflet map configuration
+- `firebase.json` – Firebase Hosting configuration
+- `robots.txt` – crawler policy
+- `sitemap.txt` – sitemap entries
+- `favicon/` – website favicon assets
 
-MDN Web Docs. (2025). Publishing your website. Available at: https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/Publishing_your_website (Accessed: 6 October 2026).
+## Local Development
 
-The Net Ninja. (2023). Firebase Hosting Tutorial. Available at: https://www.youtube.com/watch?v=9k8f8CfOMrg (Accessed: 28 October 2026).
+To run the site locally:
 
-Kevin Powell. (2024). Learn CSS Grid in 20 Minutes. Available at: https://www.youtube.com/watch?v=7kVeCqQCxlk (Accessed: 14 October 2026).
+1. Open the project folder.
+2. Start a local static server using a tool such as:
 
-Express.js Team. (2025). Expressing yourself - Node.js web application framework. Available at: https://expressjs.com/ (Accessed: 20 October 2026).
+```bash
+npx http-server . -p 8000
+```
 
-Codevolution. (2024). Full Stack Development Tutorial. Available at: https://www.youtube.com/watch?v=3q3LW1V8kOM (Accessed: 30 October 2026).
+3. Visit:
 
-Academind. (2023). Favicons & Meta Tags Explained. Available at: https://www.youtube.com/watch?v=abc123xyz00 (Accessed: 11 October 2026)
+```text
+http://127.0.0.1:8000
+```
+
+## Deployment
+
+This project is configured for Firebase Hosting.
+
+To deploy manually:
+
+```bash
+firebase deploy --only hosting --project hope-heaven-4787b
+```
+
+## Demo Payment Flow
+
+The donation page is configured for a Stripe test-mode experience only. It shows a success response and opens a Stripe test checkout link without processing real money. This is intended for front-end testing and demonstration purposes.
+
+## Security Notes
+
+- default security headers are configured in `firebase.json`
+- CSP and related browser protections are applied in the HTML headers
+- no sensitive data is stored or processed on the front end for the demo donation flow
+
+## Notes
+
+- The site is designed to be mobile responsive.
+- The primary public contact route is the Contact page.
+- Form submissions provide immediate visual feedback to users after action.

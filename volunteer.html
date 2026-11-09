@@ -8,6 +8,7 @@
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"/>
     <title>Volunteer Portal - Hope Haven NPO</title>
+    <link rel="icon" type="image/jpeg" href="favicon/favicon.jpg" />
     
     <!-- External Scripts & Stylesheets -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
@@ -136,10 +137,11 @@
                 Hope Haven
             </a>
             <div class="hidden md:flex gap-gutter items-center">
-                <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="index.html#about">About Us</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="index.html">Home</a>
                 <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="services.html">Services</a>
                 <a class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="volunteer.html">Volunteer</a>
                 <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="contact.html">Contact</a>
+                <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="donate.html">Donate</a>
             </div>
             <a href="donate.html" type="button" class="bg-[#D69E2E] text-primary h-[48px] px-6 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-[#ffc250] transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]">
                 DONATE NOW
@@ -149,7 +151,7 @@
             </button>
         </div>
         <nav class="mobile-menu md:hidden" data-mobile-menu>
-            <a href="index.html#about">About Us</a>
+            <a href="index.html">Home</a>
             <a href="services.html">Services</a>
             <a href="volunteer.html">Volunteer</a>
             <a href="contact.html">Contact</a>
@@ -178,100 +180,103 @@
                 </div>
             </div>
 
-            <div class="w-full" id="volunteer-form-display">
-                <!-- Step 1: Personal Info -->
-                <div class="step-active" id="step-1">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                        <div class="input-group flex flex-col gap-2">
-                            <label class="font-label-bold text-label-bold text-primary" for="firstName">First Name <span class="text-error">*</span></label>
-                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="firstName" type="text"/>
-                        </div>
-                        <div class="input-group flex flex-col gap-2">
-                            <label class="font-label-bold text-label-bold text-primary" for="lastName">Last Name <span class="text-error">*</span></label>
-                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="lastName" type="text"/>
-                        </div>
-                        <div class="input-group flex flex-col gap-2 md:col-span-2">
-                            <label class="font-label-bold text-label-bold text-primary" for="email">Email Address <span class="text-error">*</span></label>
-                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="email" type="email"/>
-                        </div>
-                        <div class="input-group flex flex-col gap-2 md:col-span-2">
-                            <label class="font-label-bold text-label-bold text-primary" for="phone">Phone Number</label>
-                            <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="phone" type="tel"/>
+            <form class="w-full" id="volunteer-form" data-form-type="volunteer" novalidate>
+                <div id="volunteer-form-display">
+                    <!-- Step 1: Personal Info -->
+                    <div class="step-active" id="step-1">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            <div class="input-group flex flex-col gap-2">
+                                <label class="font-label-bold text-label-bold text-primary" for="firstName">First Name <span class="text-error">*</span></label>
+                                <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="firstName" type="text" required/>
+                            </div>
+                            <div class="input-group flex flex-col gap-2">
+                                <label class="font-label-bold text-label-bold text-primary" for="lastName">Last Name <span class="text-error">*</span></label>
+                                <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="lastName" type="text" required/>
+                            </div>
+                            <div class="input-group flex flex-col gap-2 md:col-span-2">
+                                <label class="font-label-bold text-label-bold text-primary" for="email">Email Address <span class="text-error">*</span></label>
+                                <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="email" type="email" required/>
+                            </div>
+                            <div class="input-group flex flex-col gap-2 md:col-span-2">
+                                <label class="font-label-bold text-label-bold text-primary" for="phone">Phone Number</label>
+                                <input class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all" id="phone" type="tel"/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Step 2: Skills & Availability -->
-                <div class="step-hidden" id="step-2">
-                    <div class="flex flex-col gap-8 mb-8">
-                        <div class="input-group flex flex-col gap-2">
-                            <label class="font-label-bold text-label-bold text-primary" for="skills">Primary Skills/Interests</label>
-                            <select class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all appearance-none cursor-pointer" id="skills">
-                                <option disabled selected value="">Select an area of interest...</option>
-                                <option value="mentorship">Mentorship &amp; Tutoring</option>
-                                <option value="admin">Administrative Support</option>
-                                <option value="events">Event Coordination</option>
-                                <option value="logistics">Logistics &amp; Transport</option>
-                            </select>
+                    <!-- Step 2: Skills & Availability -->
+                    <div class="step-hidden" id="step-2">
+                        <div class="flex flex-col gap-8 mb-8">
+                            <div class="input-group flex flex-col gap-2">
+                                <label class="font-label-bold text-label-bold text-primary" for="skills">Primary Skills/Interests</label>
+                                <select class="h-[48px] px-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all appearance-none cursor-pointer" id="skills">
+                                    <option disabled selected value="">Select an area of interest...</option>
+                                    <option value="mentorship">Mentorship &amp; Tutoring</option>
+                                    <option value="admin">Administrative Support</option>
+                                    <option value="events">Event Coordination</option>
+                                    <option value="logistics">Logistics &amp; Transport</option>
+                                </select>
+                            </div>
+                            <div class="input-group flex flex-col gap-4">
+                                <label class="font-label-bold text-label-bold text-primary">Availability (Check all that apply)</label>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                        <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                        <span class="font-body-sm text-body-sm">Weekdays</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                        <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                        <span class="font-body-sm text-body-sm">Weeknights</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                        <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                        <span class="font-body-sm text-body-sm">Weekends</span>
+                                    </label>
+                                    <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
+                                        <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
+                                        <span class="font-body-sm text-body-sm">Flexible</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="input-group flex flex-col gap-2">
+                                <label class="font-label-bold text-label-bold text-primary" for="experience">Briefly describe any relevant experience</label>
+                                <textarea class="p-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all resize-none" id="experience" rows="4"></textarea>
+                            </div>
                         </div>
-                        <div class="input-group flex flex-col gap-4">
-                            <label class="font-label-bold text-label-bold text-primary">Availability (Check all that apply)</label>
-                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
-                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
-                                    <span class="font-body-sm text-body-sm">Weekdays</span>
-                                </label>
-                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
-                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
-                                    <span class="font-body-sm text-body-sm">Weeknights</span>
-                                </label>
-                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
-                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
-                                    <span class="font-body-sm text-body-sm">Weekends</span>
-                                </label>
-                                <label class="flex items-center gap-2 cursor-pointer p-3 border border-outline-variant rounded-lg hover:bg-surface-container-low transition-colors">
-                                    <input class="w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" type="checkbox"/>
-                                    <span class="font-body-sm text-body-sm">Flexible</span>
+                    </div>
+
+                    <!-- Step 3: Authorization & Consent -->
+                    <div class="step-hidden" id="step-3">
+                        <div class="flex flex-col gap-6 mb-8">
+                            <div class="p-6 bg-surface-container-low rounded-lg border border-outline-variant">
+                                <h3 class="font-headline-md text-headline-md text-primary mb-4">Background Check Authorization</h3>
+                                <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+                                    As a non-profit organization working with vulnerable populations, Hope Haven requires a standard background check for all regular volunteers. By checking the box below, you consent to this process.
+                                </p>
+                                <label class="flex items-start gap-3 cursor-pointer mt-6">
+                                    <input class="mt-1 w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" id="consent-check" type="checkbox" required/>
+                                    <span class="font-body-sm text-body-sm text-on-surface">I authorize Hope Haven NPO to conduct a background check and agree to the Volunteer Terms of Service. <span class="text-error">*</span></span>
                                 </label>
                             </div>
                         </div>
-                        <div class="input-group flex flex-col gap-2">
-                            <label class="font-label-bold text-label-bold text-primary" for="experience">Briefly describe any relevant experience</label>
-                            <textarea class="p-4 bg-surface-container-lowest border border-[#CBD5E0] rounded-lg font-body-md text-body-md text-on-surface transition-all resize-none" id="experience" rows="4"></textarea>
-                        </div>
                     </div>
-                </div>
 
-                <!-- Step 3: Authorization & Consent -->
-                <div class="step-hidden" id="step-3">
-                    <div class="flex flex-col gap-6 mb-8">
-                        <div class="p-6 bg-surface-container-low rounded-lg border border-outline-variant">
-                            <h3 class="font-headline-md text-headline-md text-primary mb-4">Background Check Authorization</h3>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
-                                As a non-profit organization working with vulnerable populations, Hope Haven requires a standard background check for all regular volunteers. By checking the box below, you consent to this process.
-                            </p>
-                            <label class="flex items-start gap-3 cursor-pointer mt-6">
-                                <input class="mt-1 w-5 h-5 text-primary border-[#CBD5E0] rounded focus:ring-primary" id="consent-check" type="checkbox"/>
-                                <span class="font-body-sm text-body-sm text-on-surface">I authorize Hope Haven NPO to conduct a background check and agree to the Volunteer Terms of Service. <span class="text-error">*</span></span>
-                            </label>
-                        </div>
+                    <!-- Form Controls -->
+                    <div class="flex justify-between pt-6 border-t border-outline-variant mt-4">
+                        <button class="hidden h-[48px] px-6 rounded-lg font-label-bold text-label-bold border-2 border-primary text-primary hover:bg-surface-container-low transition-colors flex items-center justify-center" id="prev-btn" type="button">
+                            Back
+                        </button>
+                        <div class="flex-grow"></div>
+                        <button class="bg-primary text-on-primary h-[48px] px-8 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-primary-container transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]" id="next-btn" type="button">
+                            Continue
+                        </button>
+                        <button class="hidden bg-[#D69E2E] text-primary h-[48px] px-8 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-[#ffc250] transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]" id="submit-btn" type="submit">
+                            Submit Application
+                        </button>
                     </div>
+                    <div data-form-status class="mt-4"></div>
                 </div>
-
-                <!-- Form Controls -->
-                <div class="flex justify-between pt-6 border-t border-outline-variant mt-4">
-                    <button class="hidden h-[48px] px-6 rounded-lg font-label-bold text-label-bold border-2 border-primary text-primary hover:bg-surface-container-low transition-colors flex items-center justify-center" id="prev-btn" type="button">
-                        Back
-                    </button>
-                    <div class="flex-grow"></div>
-                    <button class="bg-primary text-on-primary h-[48px] px-8 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-primary-container transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]" id="next-btn" type="button">
-                        Continue
-                    </button>
-                    <button class="hidden bg-[#D69E2E] text-primary h-[48px] px-8 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-[#ffc250] transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]" id="submit-btn" type="button">
-                        Submit Application
-                    </button>
-                </div>
-            </div>
+            </form>
         </div>
     </main>
 

@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
     return wrapper;
   };
 
+  const setFormStatus = (form, message, type = 'success') => {
+    const statusTarget = form.querySelector('[data-form-status]');
+    if (!statusTarget) return;
+    statusTarget.replaceChildren(statusMarkup(message, type));
+  };
+
   const getDonationAmount = (form) => {
     const selectedAmount = form.querySelector('input[name="amount"]:checked');
     if (!selectedAmount) return 0;
@@ -38,6 +44,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return Number(selectedAmount.value || 0);
   };
 
+  const getStripeCheckoutUrl = (form) => {
+    const donationAmount = getDonationAmount(form);
+    const emailValue = form.querySelector('#email')?.value?.trim() || 'demo@hopehaven.test';
+    const cents = Math.max(5000, Math.round((Number(donationAmount) || 500) * 100));
+    return `https://buy.stripe.com/test_00w3eI2QJb8NejW000?prefilled_email=${encodeURIComponent(emailValue)}&amount=${cents}`;
+  };
+
   const handleFormSubmit = (event) => {
     const form = event.currentTarget;
     if (!form.checkValidity()) {
@@ -48,38 +61,50 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
 
     const formType = form.dataset.formType || 'general';
-    const statusTarget = form.querySelector('[data-form-status]');
     let successText = 'Thank you. Your message has been received.';
 
     if (formType === 'donation') {
       const donationAmount = getDonationAmount(form);
-      const emailValue = form.querySelector('#email')?.value?.trim() || '';
-      successText = 'Demo Stripe test mode is active. Your donation request has been accepted and is ready for a real Stripe checkout link when you add your own test keys.';
+      const emailValue = form.querySelector('#email')?.value?.trim() || 'demo@hopehaven.test';
+      successText = 'Demo Stripe test mode is active. Your donation request has been accepted and the secure Stripe test checkout is opening now.';
 
+      setFormStatus(form, successText, 'success');
+      const summary = document.createElement('div');
+      summary.className = 'demo-checkout-summary';
+      summary.innerHTML = `
+        <div style="margin-top:12px; padding:12px 14px; border-radius:12px; background:#eef5ff; border:1px solid #cfe0ff; color:#10243d; line-height:1.6; font-size:0.95rem;">
+          <strong style="display:block; margin-bottom:4px;">Stripe demo checkout summary</strong>
+          <span>Donation: ${donationAmount > 0 ? `R${donationAmount.toLocaleString()}` : 'Custom amount'}</span><br>
+          <span>Email: ${emailValue || 'Not provided'}</span><br>
+          <span>Mode: Test only — no funds are charged.</span>
+        </div>
+      `;
+      const statusTarget = form.querySelector('[data-form-status]');
       if (statusTarget) {
-        const statusElement = statusMarkup(successText, 'success');
-        const summary = document.createElement('div');
-        summary.className = 'demo-checkout-summary';
-        summary.innerHTML = `
-          <div style="margin-top:12px; padding:12px 14px; border-radius:12px; background:#eef5ff; border:1px solid #cfe0ff; color:#10243d; line-height:1.6; font-size:0.95rem;">
-            <strong style="display:block; margin-bottom:4px;">Stripe demo checkout summary</strong>
-            <span>Donation: ${donationAmount > 0 ? `R${donationAmount.toLocaleString()}` : 'Custom amount'}</span><br>
-            <span>Email: ${emailValue || 'Not provided'}</span><br>
-            <span>Mode: Test only — no funds are charged.</span>
-          </div>
-        `;
-        statusElement.appendChild(summary);
-        statusTarget.replaceChildren(statusElement);
+        statusTarget.appendChild(summary);
       }
+
+      window.setTimeout(() => {
+        window.location.href = getStripeCheckoutUrl(form);
+      }, 500);
 
       form.reset();
       return;
     }
 
-    if (statusTarget) {
-      statusTarget.replaceChildren(statusMarkup(successText, 'success'));
+    if (formType === 'volunteer') {
+      successText = 'Thank you! Your volunteer application has been received. Our team will contact you soon.';
     }
 
+    if (formType === 'contact') {
+      successText = 'Thanks for contacting Hope Haven. Your message has been sent successfully.';
+    }
+
+    if (formType === 'enquiry') {
+      successText = 'Thanks for your enquiry. We will get back to you shortly.';
+    }
+
+    setFormStatus(form, successText, 'success');
     form.reset();
   };
 
