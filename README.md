@@ -4,6 +4,10 @@ Markdown
 A responsive static website built for **Hope Haven**, a South African non-profit organisation focused on crisis support, shelter access, volunteer engagement, and community outreach.
 
 ---
+<img width="1359" height="717" alt="image" src="https://github.com/user-attachments/assets/dfc7e199-5880-4f9c-9fea-5ffe36cd9363" />
+<img width="1349" height="723" alt="image" src="https://github.com/user-attachments/assets/42258569-a679-4138-ae5c-09d1899c34bd" />
+<img width="1359" height="722" alt="image" src="https://github.com/user-attachments/assets/8bbe8a5f-a868-4718-a27e-c61f597464ab" />
+<img width="1358" height="723" alt="image" src="https://github.com/user-attachments/assets/b2958b4b-6e8d-4629-a1f0-6d6e6f89858f" />
 
 ## Table of Contents
 - [Overview](#overview)
