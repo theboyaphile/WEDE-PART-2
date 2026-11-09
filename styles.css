@@ -134,6 +134,10 @@ a:focus-visible {
 }
 
 @media (max-width: 767px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .mobile-menu-button {
     display: inline-flex;
     align-items: center;
@@ -145,6 +149,7 @@ a:focus-visible {
     background: rgba(255, 255, 255, 0.8);
     color: var(--primary);
     cursor: pointer;
+    flex-shrink: 0;
   }
 
   .mobile-menu {
@@ -172,5 +177,52 @@ a:focus-visible {
 
   .site-shell {
     width: min(100%, 100% - 1rem);
+  }
+
+  .site-donate-button {
+    padding: 0.55rem 0.8rem !important;
+    min-height: 40px !important;
+    font-size: 0.7rem !important;
+    line-height: 1.1 !important;
+    letter-spacing: 0.04em !important;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  }
+
+  .site-donate-button.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+
+  .max-w-container-max,
+  .site-shell,
+  main,
+  nav > div,
+  header > div,
+  footer > div,
+  section,
+  .px-margin-desktop,
+  .px-margin-mobile {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .max-w-container-max {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  header nav > div,
+  header > div,
+  nav > div {
+    gap: 0.5rem;
+  }
+
+  header a,
+  header button {
+    white-space: nowrap;
   }
 }

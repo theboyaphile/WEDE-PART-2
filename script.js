@@ -18,6 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const donateButtons = document.querySelectorAll('a[href="donate.html"]');
+  donateButtons.forEach((button) => {
+    const isPrimaryButton = button.textContent.trim().toUpperCase().includes('DONATE NOW') ||
+      button.classList.contains('bg-secondary-container') ||
+      button.classList.contains('bg-primary-container');
+
+    if (isPrimaryButton) {
+      button.classList.add('site-donate-button');
+    }
+  });
+
+  let lastScrollY = window.scrollY || window.pageYOffset || 0;
+  const updateStickyDonateVisibility = () => {
+    const currentScrollY = window.scrollY || window.pageYOffset || 0;
+    const shouldHide = currentScrollY > lastScrollY && currentScrollY > 80;
+
+    document.querySelectorAll('.site-donate-button').forEach((button) => {
+      button.classList.toggle('is-hidden', shouldHide);
+    });
+
+    lastScrollY = currentScrollY;
+  };
+
+  window.addEventListener('scroll', updateStickyDonateVisibility, { passive: true });
+
   const statusMarkup = (message, type = 'success') => {
     const wrapper = document.createElement('div');
     wrapper.className = `form-status ${type} is-visible`;
