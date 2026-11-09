@@ -3,10 +3,16 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self';"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"/>
     <title>Volunteer Portal - Hope Haven NPO</title>
     
     <!-- External Scripts & Stylesheets -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,700;1,400;1,700&family=Chivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
 
@@ -138,19 +144,29 @@
             <a href="donate.html" type="button" class="bg-[#D69E2E] text-primary h-[48px] px-6 rounded-lg font-label-bold text-label-bold flex items-center justify-center hover:bg-[#ffc250] transition-colors shadow-[0px_4px_12px_rgba(26,54,93,0.05)]">
                 DONATE NOW
             </a>
+            <button type="button" class="mobile-menu-button md:hidden" data-nav-toggle aria-expanded="false" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
+        <nav class="mobile-menu md:hidden" data-mobile-menu>
+            <a href="index.html#about">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html">Donate</a>
+        </nav>
     </nav>
 
     <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-[64px] flex flex-col items-center">
         <!-- Header Section -->
-        <div class="text-center max-w-2xl mb-12">
+        <div class="text-center max-w-2xl mb-12" data-animate data-delay="80">
             <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6">Join Our Volunteer Team</h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant">
                 Your time and skills can make a profound difference. Complete the application below to start your journey with Hope Haven.
             </p>
         </div>
 
-        <div class="w-full max-w-3xl bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(26,54,93,0.05)] p-6 md:p-10 relative overflow-hidden">
+        <div class="w-full max-w-3xl bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0px_4px_12px_rgba(26,54,93,0.05)] p-6 md:p-10 relative overflow-hidden card-hover-lift" data-animate data-delay="180">
             <!-- Progress Indicator -->
             <div class="mb-10">
                 <div class="flex justify-between mb-2">

@@ -3,8 +3,14 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self';"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"/>
     <title>Services &amp; Shelter Info - Hope Haven</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700&amp;family=Chivo:wght@400;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
@@ -124,7 +130,17 @@
             <a href="donate.html" class="bg-secondary-container text-primary-container font-label-bold text-label-bold px-6 h-12 rounded-lg hover:bg-secondary-fixed-dim transition-colors duration-200 flex items-center justify-center">
                 DONATE NOW
             </a>
+            <button type="button" class="mobile-menu-button md:hidden" data-nav-toggle aria-expanded="false" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
+        <nav class="mobile-menu md:hidden" data-mobile-menu>
+            <a href="index.html#about">About Us</a>
+            <a href="services.html">Services</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html">Donate</a>
+        </nav>
     </nav>
 
     <!-- Main Content -->
@@ -132,13 +148,13 @@
         <!-- Hero Section -->
         <section class="py-16 md:py-24 px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
-                <div class="md:col-span-7">
+                <div class="md:col-span-7" data-animate data-delay="80">
                     <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6">Services &amp; Shelter Information</h1>
                     <p class="font-body-lg text-body-lg text-on-surface-variant mb-8 max-w-2xl">
                         Providing immediate relief and long-term support for those in need. Access real-time shelter availability, daily meal schedules, and comprehensive support resources.
                     </p>
                 </div>
-                <div class="md:col-span-5">
+                <div class="md:col-span-5 card-hover-lift" data-animate data-delay="140">
                     <div class="bg-cover bg-center w-full h-[300px] rounded-xl border border-outline-variant/30 shadow-sm" data-alt="A modern, clean, and welcoming non-profit community center interior in light mode. Soft, natural sunlight streams through large windows, illuminating comfortable seating areas and helpful informational desks. The atmosphere is safe, stable, and professional, using a color palette of soft whites, light grays, and subtle navy blue accents. High-quality corporate non-profit photography style." style="background-image: url('Assets/services.jpg')"></div>
                 </div>
             </div>

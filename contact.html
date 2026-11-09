@@ -3,8 +3,15 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://unpkg.com; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self';"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"/>
     <title>Contact Us - Hope Haven NPO</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&amp;family=Chivo:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
@@ -103,6 +110,29 @@
             font-family: 'Material Symbols Outlined';
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
+        #map {
+            width: 100%;
+            height: 100%;
+            min-height: 384px;
+            z-index: 1;
+        }
+
+        .leaflet-container {
+            font-family: 'Atkinson Hyperlegible Next', sans-serif;
+            background: #eef3f8;
+        }
+
+        .leaflet-popup-content-wrapper,
+        .leaflet-popup-tip {
+            background: #002045;
+            color: #ffffff;
+        }
+
+        .leaflet-popup-content {
+            margin: 12px 14px;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
@@ -123,14 +153,23 @@
             <!-- Mobile Navigation Header -->
             <div class="flex justify-between items-center h-20 px-margin-mobile md:hidden">
                 <a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim" href="index.html">Hope Haven</a>
-                <span class="material-symbols-outlined text-primary cursor-pointer" data-icon="menu">menu</span>
+                <button type="button" class="mobile-menu-button" data-nav-toggle aria-expanded="false" aria-label="Toggle navigation menu">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
+            <nav class="mobile-menu" data-mobile-menu>
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="enquiry.html">Enquiry</a>
+                <a href="contact.html">Contact</a>
+                <a href="donate.html">Donate</a>
+            </nav>
         </nav>
     </header>
 
     <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 space-y-16">
         <!-- Header Section -->
-        <section class="text-center max-w-3xl mx-auto space-y-6">
+        <section class="text-center max-w-3xl mx-auto space-y-6" data-animate data-delay="80">
             <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary">Contact Us</h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant">Reach out directly to our team across our municipal centers for inquiries, support, or emergency assistance.</p>
         </section>
@@ -138,9 +177,9 @@
         <!-- Main Bento Grid -->
         <section class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
             <!-- Contact Form Card -->
-            <div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm">
+            <div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-8 shadow-sm card-hover-lift" data-animate data-delay="140">
                 <h2 class="font-headline-lg text-headline-lg text-primary mb-6">Send Us a Direct Message</h2>
-                <form action="#" method="post" class="space-y-6">
+                <form action="#" method="post" class="space-y-6" data-form-type="contact" id="contact-form">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block font-label-bold text-label-bold text-on-surface mb-2" for="contactName">Name</label>
@@ -165,13 +204,14 @@
                     <button class="w-full md:w-auto bg-primary-container text-on-primary font-label-bold text-label-bold px-8 py-3 rounded-DEFAULT hover:bg-primary transition-colors min-h-[48px]" type="submit">
                         Send Message
                     </button>
+                    <div data-form-status></div>
                 </form>
             </div>
 
             <!-- Side Info Cards -->
             <div class="md:col-span-4 flex flex-col space-y-gutter">
                 <!-- Emergency Hotlines Card -->
-                <div class="bg-error-container text-on-error-container border border-error-container rounded-xl p-8 shadow-sm">
+                <div class="bg-error-container text-on-error-container border border-error-container rounded-xl p-8 shadow-sm card-hover-lift" data-animate data-delay="180">
                     <div class="flex items-center space-x-3 mb-4">
                         <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">emergency</span>
                         <h3 class="font-headline-md text-headline-md">Emergency Hotlines</h3>
@@ -194,7 +234,7 @@
                 </div>
 
                 <!-- Center Locations Card -->
-                <div class="bg-primary text-on-primary rounded-xl p-8 shadow-sm flex-grow">
+                <div class="bg-primary text-on-primary rounded-xl p-8 shadow-sm flex-grow card-hover-lift" data-animate data-delay="220">
                     <h3 class="font-headline-md text-headline-md mb-6">Our Shelter Centers</h3>
                     <div class="space-y-8">
                         <!-- Location 1 -->
@@ -236,22 +276,13 @@
         </section>
 
         <!-- Interactive Map Section -->
-        <section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col">
+        <section class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col card-hover-lift" data-animate data-delay="260">
             <div class="p-6 md:p-8 border-b border-outline-variant">
                 <h2 class="font-headline-md text-headline-md text-primary">Interactive Map &amp; Navigation</h2>
                 <p class="font-body-sm text-body-sm text-on-surface-variant mt-2">Find your nearest Hope Haven shelter center location on the map below.</p>
             </div>
             <div class="w-full h-96 relative bg-surface-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1!2d-73.98!3d40.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzAwLjAiTiA3M8KwNTknMDAuMCJX!5e0!3m2!1sen!2s" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    title="Hope Haven Center Locations Map"
-                    class="w-full h-full">
-                </iframe>
+                <div id="map" aria-label="Hope Haven Center locations map"></div>
             </div>
         </section>
     </main>
@@ -273,5 +304,7 @@
         </div>
     </footer>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="contact-map.js" defer></script>
 </body>
 </html>

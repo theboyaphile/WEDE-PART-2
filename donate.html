@@ -3,8 +3,14 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://js.stripe.com; connect-src 'self' https:; object-src 'none'; base-uri 'self'; form-action 'self' https://checkout.stripe.com;"/>
+    <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()"/>
     <title>Donate to Hope Haven NPO</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="styles.css"/>
+    <script src="script.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,200..800;1,200..800&family=Chivo:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script id="tailwind-config">
@@ -122,21 +128,31 @@
                 <a class="font-body-md text-body-md text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-200 ease-in-out" href="contact.html">Contact</a>
             </div>
             <a href="donate.html" class="bg-secondary-container text-primary-container font-label-bold text-label-bold px-6 py-3 rounded-xl hover:bg-secondary-fixed-dim transition-colors duration-200 ease-in-out h-12 flex items-center justify-center">DONATE NOW</a>
+            <button type="button" class="mobile-menu-button md:hidden" data-nav-toggle aria-expanded="false" aria-label="Toggle navigation menu">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
         </div>
+        <nav class="mobile-menu md:hidden" data-mobile-menu>
+            <a href="index.html">Home</a>
+            <a href="services.html">Services</a>
+            <a href="volunteer.html">Volunteer</a>
+            <a href="contact.html">Contact</a>
+            <a href="donate.html">Donate</a>
+        </nav>
     </nav>
 
     <!-- Main Content Canvas -->
     <main class="flex-grow w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-24">
         <!-- Header -->
-        <div class="text-center max-w-2xl mx-auto mb-16">
+        <div class="text-center max-w-2xl mx-auto mb-16" data-animate data-delay="80">
             <h1 class="font-headline-xl-mobile md:font-headline-xl text-headline-xl-mobile md:text-headline-xl text-primary mb-6">Make a Difference Today</h1>
             <p class="font-body-lg text-body-lg text-on-surface-variant">Your secure donation helps provide essential services and support to South African communities in need. Every contribution counts.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter lg:gap-12">
             <!-- Donation Form -->
-            <div class="md:col-span-7 lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(26,54,93,0.05)] p-6 md:p-8">
-                <form class="space-y-8" id="donation-form" onsubmit="event.preventDefault();">
+            <div class="md:col-span-7 lg:col-span-8 bg-surface-container-lowest rounded-xl border border-outline-variant shadow-[0_4px_12px_rgba(26,54,93,0.05)] p-6 md:p-8 card-hover-lift" data-animate data-delay="160">
+                <form class="space-y-8" id="donation-form" data-form-type="donation" onsubmit="event.preventDefault();">
                     <!-- Frequency Selection -->
                     <fieldset>
                         <legend class="font-headline-md text-headline-md text-primary mb-4 border-b border-outline-variant pb-2 w-full">Donation Type</legend>
@@ -282,14 +298,19 @@
 
                     <!-- Secure Submission -->
                     <div class="pt-6 border-t border-outline-variant">
-                        <div class="flex items-start gap-3 mb-6">
+                        <div class="flex items-start gap-3 mb-4">
                             <span class="material-symbols-outlined text-primary mt-1">verified_user</span>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Demo Stripe test mode is enabled for this website. No real card or bank charges are processed until you replace the payment link with your own Stripe test checkout URL.</p>
+                        </div>
+                        <div class="flex items-start gap-3 mb-6">
+                            <span class="material-symbols-outlined text-primary mt-1">security</span>
                             <p class="font-body-sm text-body-sm text-on-surface-variant">Your transaction is secure and encrypted. We do not store your credit card information on our servers. By donating, you agree to our <a class="text-primary underline" href="#">Terms of Service</a>.</p>
                         </div>
                         <button class="w-full bg-secondary-container text-primary-container font-label-bold text-label-bold py-4 rounded-xl hover:bg-secondary-fixed-dim transition-colors h-14 flex items-center justify-center gap-2 shadow-sm text-lg" type="submit">
                             <span class="material-symbols-outlined">favorite</span>
-                            Complete Donation
+                            Continue to Stripe Test Checkout
                         </button>
+                        <div data-form-status></div>
                     </div>
                 </form>
             </div>
@@ -297,7 +318,7 @@
             <!-- Impact Summary Sidebar -->
             <div class="md:col-span-5 lg:col-span-4 space-y-6">
                 <!-- Trust Badge Card -->
-                <div class="bg-primary-container text-on-primary rounded-xl p-6 shadow-sm">
+                <div class="bg-primary-container text-on-primary rounded-xl p-6 shadow-sm card-hover-lift" data-animate data-delay="220">
                     <h3 class="font-headline-md text-headline-md mb-4 flex items-center gap-2">
                         <span class="material-symbols-outlined icon-fill text-secondary-container">shield</span>
                         Verified NPO
@@ -310,7 +331,7 @@
                 </div>
 
                 <!-- Impact Visualizer -->
-                <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-[0_4px_12px_rgba(26,54,93,0.05)]">
+                <div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-[0_4px_12px_rgba(26,54,93,0.05)] card-hover-lift" data-animate data-delay="260">
                     <h3 class="font-headline-md text-headline-md text-primary mb-4">Your Impact</h3>
                     <div class="space-y-4" id="impact-display">
                         <div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-lg border border-outline-variant">
